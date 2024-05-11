@@ -3,6 +3,9 @@ package kg.alatoo.hr.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+
 @Entity
 @Data
 public class Salary {
@@ -10,7 +13,6 @@ public class Salary {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee_id", nullable = false)
-    private Employee employee;
+    @Column(name = "amount")
+    private BigDecimal amount;
 }
