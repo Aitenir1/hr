@@ -1,5 +1,6 @@
 package kg.alatoo.hr.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -39,7 +40,9 @@ public class Employee {
     @Temporal(TemporalType.DATE)
     private Date hireDate;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(nullable = true)
+    @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
     private Salary salary;
 
 }
